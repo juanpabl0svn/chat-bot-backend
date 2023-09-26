@@ -1,4 +1,7 @@
-src/services/token.py
-__pycache__/
 .venv/
-.json
+.env/
+.env
+__pycache__/
+*.py[cod]
+
+.pytest_cache/

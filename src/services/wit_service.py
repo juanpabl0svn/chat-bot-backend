@@ -1,9 +1,11 @@
 from wit import Wit
+from decouple import config
 
-from token_wit import TOKEN
 
-client = Wit(TOKEN)
+client = Wit(config('TOKEN'))
 
-res = client.message('quiero cambiar mi contraseña')
-
-print(res)
+def give_an_answer(message: str) -> str | None:
+  res = client.message(message)
+  if not res['intents'] or res['intents']['name'] == 'no_sense':
+    return None 
+  return res['intents']['name']
